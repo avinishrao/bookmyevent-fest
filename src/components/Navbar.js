@@ -1,13 +1,13 @@
 import React from "react";
-
+import {Link} from 'react-router-dom';
 export default function Navbar() {
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+          <Link class="navbar-brand" to="/">
             BookMyEvent
-          </a>
+          </Link>
           <button
             class="navbar-toggler"
             type="button"
@@ -34,42 +34,44 @@ export default function Navbar() {
           </div>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown">
-                <a
+                <Link
                   class="nav-link dropdown-toggle"
-                  href="#"
+                  to="#"
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   Dropdown
-                </a>
+                </Link>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <Link class="dropdown-item" to="#">
                       Action
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <Link class="dropdown-item" to="#">
                       Another action
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <hr class="dropdown-divider" />
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <Link class="dropdown-item" to="#">
                       Something else here
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
               </ul>
               <form class="d-flex">
-              <button class="btn btn-outline-success" type="submit">
-                Sign in
-              </button>
+                <Link class="" to="/login">
+                  <button class="btn btn-outline-success" type="submit">
+                    Sign in
+                  </button>
+                </Link>
             </form>
           </div>
         </nav>
