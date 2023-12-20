@@ -16,6 +16,12 @@ import 'slick-carousel/slick/slick-theme.css';
 // import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 // import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 
+// mongoimport --uri mongodb+srv://avinishrao:Avinishrao@1234@cluster0.npzpvtc.mongodb.net/bookmyeventdb --collection bme_card --type jsonArray --file "D:\Semester 1\Software Engineering\BookMyEvent\card-data.json"
+
+// mongoimport --uri "mongodb+srv://avinishrao:Avinishrao%401234@cluster0.npzpvtc.mongodb.net/bookmyeventdb" --collection bme_card --type jsonArray --file "D:/Semester 1/Software Engineering/BookMyEvent/card-data.json"
+
+
+// mongoimport --db bookmyeventdb --collection bme_card --file "D:/Semester 1/Software Engineering/BookMyEvent/card-data.json" --jsonArray
 
 
 function App() {
