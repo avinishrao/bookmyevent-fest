@@ -10,12 +10,9 @@ const mongoConnect = async() =>{
         await mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
         console.log("Connected successfully to MongoDB");
         const dataRetrive = await mongoose.connection.db.collection("bme_card");
-
-        // console.log(dataRetrive.find({"genre":"comedy"}).toArray());
-        // const bme_card_details = 
         await dataRetrive.find({}).toArray()
             .then((data)=>{
-                console.log(data);
+                console.log();
             })
             .catch((err)=>{
                 console.error(err);
