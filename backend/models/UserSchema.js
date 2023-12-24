@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const userSchema = new Schema({
-    gmail:{
+    name:{
         type: String,
         required: true
     },
@@ -11,11 +11,15 @@ const userSchema = new Schema({
         type:String,
         required : true
     },
-    appleId:{
+    password:{
         type:String,
         required : true
     },
     mobile:{
+        type:String,
+        required: true
+    },
+    location:{
         type:String,
         required: true
     },

@@ -72,6 +72,12 @@ export default function Navbar() {
                     Sign in
                   </button>
                 </Link>
+
+                <Link class="" to="/createuser">
+                  <button class="btn btn-outline-success" type="submit">
+                    Register
+                  </button>
+                </Link>
             </form>
           </div>
         </nav>

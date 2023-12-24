@@ -15,3 +15,25 @@
 .App-link {
   color: #61dafb;
 }
+
+/* Login CSS */
+.ReactModal__Content.ReactModal__Content--after-open{
+  margin: 100px 600px;
+  
+}
+.ReactModal__Overlay.ReactModal__Overlay--after-open{
+  background-color: rgba(0, 0, 0, 0.45) !important;
+  border-radius: 8px !important;
+}
+
+.popup-head{
+  display: flex;
+}
+
+#svg_close{
+}
+
+.login-getstarted
+{
+  text-align: center;
+}
