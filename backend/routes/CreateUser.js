@@ -9,6 +9,10 @@ const emailVlaidation = body('email').isEmail();
 // const appleId = body('appleId').isEmail();
 const mobileValidation = body('mobile', 'Invalid Mobile Number').isLength({ min: 11, max: 11 });
 
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const jwtSecret = "thisismyjwtsecretpassword";
+
 router.post('/createuser', nameValidation, emailVlaidation, passwordValidation, mobileValidation, 
 async (req,res)=>{
 
@@ -18,10 +22,14 @@ async (req,res)=>{
     }
 
     try{
+
+        const salt = await bcrypt.genSalt(10);
+        const securedPass = await bcrypt.hash(req.body.password, salt)
+
         await user.create({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password,
+            password: securedPass,
             mobile: req.body.mobile,
             location: req.body.location
 
@@ -47,11 +55,20 @@ async (req,res)=>{
             return res.status(400).json({ errors: "Try logging in with correct credentials" });
         }
 
-        if(req.body.password !== userData.password){
+        const pwdCompare = await bcrypt.compare(req.body.password, userData.password);
+
+        if(!pwdCompare){
             return res.status(400).json({ errors: "Try logging in with correct credentials" });
         }
         
-        return res.json({success:true});
+        const data = {
+            user: {
+                id: userData.id
+            }
+        }
+
+        const authToken = jwt.sign(data, jwtSecret);
+        return res.json({success:true, authToken: authToken});
     } catch(error) {
         console.error("Error Message: ", error)
         res.json({success:false})
