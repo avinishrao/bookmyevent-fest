@@ -14,7 +14,7 @@ async (req,res)=>{
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });;
+      return res.status(400).json({ errors: errors.array() });
     }
 
     try{
@@ -27,6 +27,31 @@ async (req,res)=>{
 
         }).then(res.json({success:true}))
 
+    } catch(error) {
+        console.error("Error Message: ", error)
+        res.json({success:false})
+    }
+})
+
+router.post('/loginuser', [emailVlaidation, passwordValidation],
+async (req,res)=>{
+    const email = req.body.email;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    try{
+        const userData = await user.findOne({email});
+        if(!userData){
+            return res.status(400).json({ errors: "Try logging in with correct credentials" });
+        }
+
+        if(req.body.password !== userData.password){
+            return res.status(400).json({ errors: "Try logging in with correct credentials" });
+        }
+        
+        return res.json({success:true});
     } catch(error) {
         console.error("Error Message: ", error)
         res.json({success:false})
