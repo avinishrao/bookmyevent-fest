@@ -30,10 +30,25 @@
   display: flex;
 }
 
+.slick-slider{
+  text-align: -webkit-center;
+}
+
 #svg_close{
 }
 
 .login-getstarted
 {
   text-align: center;
+}
+
+.fs-1{
+  margin: 0px 200px;
+}
+
+.navbar{
+  /* margin: 0px 200px; */
+
+}
+.foo-1{
 }

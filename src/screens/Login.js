@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 export default function Login() {
 
@@ -33,6 +34,7 @@ export default function Login() {
     }
 
   return (
+    <div><Navbar/>
     <div class="container">
         <form onSubmit={signInUser}>
   <div class="form-group">
@@ -51,6 +53,7 @@ export default function Login() {
   <button type="submit" class="m-3 btn btn-primary">Submit</button>
   <Link to="/createuser" class="m-3 btn btn-danger">I'm a new user</Link>
 </form>
+    </div>
     </div>
   )
 }

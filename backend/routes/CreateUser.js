@@ -6,7 +6,6 @@ const { body, validationResult } = require('express-validator');
 const nameValidation = body('name', 'Invalid Name').isLength({ min: 5});
 const passwordValidation = body('password', 'Invalid Password').isLength({ min: 5});
 const emailVlaidation = body('email').isEmail();
-// const appleId = body('appleId').isEmail();
 const mobileValidation = body('mobile', 'Invalid Mobile Number').isLength({ min: 11, max: 11 });
 
 const jwt = require("jsonwebtoken");
