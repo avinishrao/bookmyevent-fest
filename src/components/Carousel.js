@@ -8,9 +8,12 @@ import 'slick-carousel/slick/slick-theme.css';
 const settings = {
   dots: true,
   infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1
+  speed: 0.1,
+  // slidesToShow: 1.35,
+  slidesToShow:1,
+  slidesToScroll: 1,
+  autoplay: true, 
+  autoplaySpeed: 2200
 };
 
 
@@ -20,16 +23,16 @@ const settings = {
 // style={{"transform": "translateX(-1011px)","left": "auto"}}
 export default function Carousel() {
   return (
-    <div>
+    <div className="carousel-container">
       <Slider {...settings} >
         <div >
-          <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1702972896237_frides.jpg" alt="Slide 1" ></img>
+          <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1702972896237_frides.jpg" alt="Slide 1" style={{objectFit: "contain" , borderRadius: "0.5rem"}}></img>
         </div>
         <div>
-          <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1702972896237_frides.jpg" alt="Slide 2" ></img>
+          <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1703669272395_lolladesktop.jpg" alt="Slide 2" style={{objectFit: "contain" , borderRadius: "0.5rem"}}></img>
         </div>
         <div>
-          <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1702972896237_frides.jpg" alt="Slide 3"></img>
+          <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1702972896237_frides.jpg" alt="Slide 3" style={{objectFit: "contain", borderRadius: "0.5rem"}}></img>
         </div>
       </Slider>
     </div>

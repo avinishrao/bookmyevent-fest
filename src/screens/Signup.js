@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import logo from "../image/bookmyevent.png";
 
 export default function Signup() {
     const [credentials, setcredentials] = useState({name:"",email:"",mobile:"",password:"",geolocation:""})
@@ -27,6 +28,37 @@ export default function Signup() {
     }
   return (
     <div class="container">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <Link class="navbar-brand" to="/">
+              <img height="25" src={logo} alt="..." />
+            </Link>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="d-flex">
+                <Link class="btn bg-danger text-white mx-1" to="/">
+                  Home
+                </Link>
+                <Link class="btn bg-danger text-white mx-1" to="/login">
+                  Sign in
+                </Link>
+
+                
+              </div>
+          </div>
+        </nav>
+
         <form onSubmit={registerUser}>
   <div class="form-group">
     <label for="name">Name</label>

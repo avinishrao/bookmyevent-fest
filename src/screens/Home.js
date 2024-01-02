@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
 import Carousel from "../components/Carousel";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../image/bookmyevent.png";
 
 export default function Home() {
@@ -29,6 +29,11 @@ export default function Home() {
     loadData();
   }, []);
 
+  const navigate = useNavigate();
+  const handleLogout = async()=>{
+    localStorage.removeItem("authToken");
+    navigate("/");
+  }
   return (
     <div>
       <div class="container">
@@ -37,7 +42,8 @@ export default function Home() {
           <Link class="navbar-brand" to="/">
             <img 
             height="25"
-            src={logo}/>
+            src={logo}
+            alt="..."/>
           </Link>
           <button
             class="navbar-toggler"
@@ -67,7 +73,7 @@ export default function Home() {
           </div>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item dropdown">
-              <Link
+              {/* <Link
                 class="nav-link dropdown-toggle"
                 to="#"
                 id="navbarDropdown"
@@ -96,22 +102,34 @@ export default function Home() {
                     Something else here
                   </Link>
                 </li>
-              </ul>
+              </ul> */}
             </li>
+            {/* {(localStorage.getItem("authToken"))?
+            <li>
+            <Link class="dropdown-item" to="#">
+              My Bookings
+            </Link>
+          </li>
+            :"" } */}
           </ul>
-          <form class="d-flex">
-            <Link class="" to="/login">
-              <button class="btn btn-outline-success" type="submit">
+          {(!localStorage.getItem("authToken"))?
+          <div class="d-flex">
+            <Link class="btn bg-danger text-white mx-1" to="/login">
                 Sign in
-              </button>
             </Link>
 
-            <Link class="" to="/createuser">
-              <button class="btn btn-outline-success" type="submit">
+            <Link class="btn bg-danger text-white mx-1" to="/createuser">
                 Register
-              </button>
             </Link>
-          </form>
+          </div>
+          :
+           <div class="d-flex">
+            <Link class="btn bg-danger text-white mx-1" to="/mybookings">
+              My Bookings
+            </Link>
+            <div class = "btn btn-outline-danger mx-2" onClick={handleLogout}>Logout</div>
+          </div>
+          }
         </div>
       </nav>
       </div>
@@ -123,9 +141,10 @@ export default function Home() {
             ? cardCat.map((data) => {
                 return (
                   <div>
-                    <div key={data._id} class="fs-3 m-3">
+                    <div class="filter-div"><h4 key={data._id} class="filter-title">
                       {data.genre}
-                      <hr />
+                      <hr style={{color:"white", border:"solid 1.5px", marginLeft:"0px", marginRight:"50px"}}/>
+                    </h4>
                     </div>
                     <div class = "row mb-3">
                     {cardData !== [] ? 
@@ -133,10 +152,12 @@ export default function Home() {
                         .filter((dataItems) => (dataItems.genre === data.genre) && (dataItems.eventTitle.toLowerCase().includes(search.toLowerCase())) )
                         .map(filterItems=> {
                           return (
-                            <div key={filterItems._id} class= "col-12 col-md-6 col-lg-3">
-                              <Card eventName = {filterItems.eventTitle}
+                            <div key={filterItems._id} class= "col-12 col-md-6 col-lg-3 ">
+                              <Card filterItem = {filterItems}
+                              eventName = {filterItems.eventTitle}
                               imgsrc={filterItems.img}
                               eventgenre={filterItems.genre}
+                              eventId={filterItems._id}
                               ></Card>
                             </div>
                           )

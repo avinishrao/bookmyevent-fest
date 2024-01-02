@@ -11,14 +11,23 @@ const mongoConnect = async () => {
       useUnifiedTopology: true,
     });
     console.log("Connected successfully to MongoDB");
-    const dataRetrive = await mongoose.connection.db.collection("bme_card");
+    const cardData = await mongoose.connection.db.collection("bme_card");
     const cardCategory = await mongoose.connection.db.collection("bme_card_category");
-    await dataRetrive.find({}).toArray() //async (err, data) => {
+    const bookingsData = await mongoose.connection.db.collection("bme_bookings");
+    await cardData.find({}).toArray() //async (err, data) => {
         .then((data)=>{
             cardCategory.find({}).toArray()
                 .then((catData)=>{
+                  bookingsData.find({}).toArray()
+                    .then((bookdata)=>{
                     global.bme_card = data;
                     global.bme_card_category = catData;
+                    global.bme_bookings = bookdata;
+
+                    })
+                    .catch((error)=>{
+                      console.error(error);
+                    })
                 })
                 .catch((e)=>{
                     console.error(e);

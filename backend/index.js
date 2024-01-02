@@ -23,6 +23,7 @@ app.use(express.json())
 
 app.use('/api', require("./routes/CreateUser"))
 app.use('/api', require("./routes/DisplayData"))
+app.use('/api', require("./routes/EventBooking"))
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

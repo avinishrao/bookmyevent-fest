@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../image/bookmyevent.png";
+// import logo from "../image/bookmyevent.png";
 export default function Navbar() {
 
   const [search, setsearch] = useState('');
@@ -8,11 +8,11 @@ export default function Navbar() {
     <div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <Link class="navbar-brand" to="/">
+          {/* <Link class="navbar-brand" to="/">
             <img 
             height="25"
             src={logo}/>
-          </Link>
+          </Link> */}
           <button
             class="navbar-toggler"
             type="button"

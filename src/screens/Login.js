@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import logo from "../image/bookmyevent.png";
 
 export default function Login() {
 
@@ -34,8 +34,38 @@ export default function Login() {
     }
 
   return (
-    <div><Navbar/>
+    <div>
     <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <Link class="navbar-brand" to="/">
+              <img height="25" src={logo} alt="..." />
+            </Link>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="d-flex">
+                <Link class="btn bg-danger text-white mx-1" to="/">
+                  Home
+                </Link>
+
+                <Link class="btn bg-danger text-white mx-1" to="/createuser">
+                  Register
+                </Link>
+              </div>
+          </div>
+        </nav>
+
         <form onSubmit={signInUser}>
   <div class="form-group">
     <label for="InputEmail1">Email address</label>

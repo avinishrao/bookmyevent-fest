@@ -9,6 +9,9 @@ import Login from "./screens/Login";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Signup from "./screens/Signup";
+import EventDetails from "./screens/EventDetails";
+import MyBookings from "./screens/MyBookings";
+import BookEvent from "./screens/BookEvent";
 // import '../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css';
 // import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 // import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -27,6 +30,9 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/createuser" element={<Signup />} />
+            <Route exact path="/eventdetails" element={<EventDetails />} />
+            <Route exact path="/bookevents" element={<BookEvent />} />
+            <Route exact path="/mybookings" element={<MyBookings />} />
           </Routes>
       </div>
     </Router>
